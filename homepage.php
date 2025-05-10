@@ -63,13 +63,15 @@
         <ul>
             <?php
             include 'db.php'; // Kết nối cơ sở dữ liệu
-            $query = "SELECT title, price, images FROM motel ORDER BY count_view DESC LIMIT 3";
+            $query = "SELECT ID, title, price, images FROM motel ORDER BY count_view DESC LIMIT 3";
             $result = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<li>";
+                echo "<a href='motel.php?id=" . $row['ID'] . "'>";
                 echo "<img src='" . $row['images'] . "' alt='Ảnh phòng trọ' style='width:100px;height:100px;'>";
                 echo "<p>" . $row['title'] . "</p>";
                 echo "<p>Giá: " . number_format($row['price']) . " VND</p>";
+                echo "</a>";
                 echo "</li>";
             }
             ?>
@@ -80,13 +82,15 @@
         <h2>Các phòng trọ mới được đăng tải</h2>
         <ul>
             <?php
-            $query = "SELECT title, price, images FROM motel ORDER BY created_at DESC LIMIT 3";
+            $query = "SELECT ID, title, price, images FROM motel ORDER BY created_at DESC LIMIT 3";
             $result = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<li>";
+                echo "<a href='motel.php?id=" . $row['ID'] . "'>";
                 echo "<img src='" . $row['images'] . "' alt='Ảnh phòng trọ' style='width:100px;height:100px;'>";
                 echo "<p>" . $row['title'] . "</p>";
                 echo "<p>Giá: " . number_format($row['price']) . " VND</p>";
+                echo "</a>";
                 echo "</li>";
             }
             ?>
@@ -97,13 +101,15 @@
         <h2>Các phòng trọ gần trường ĐH Vinh nhất</h2>
         <ul>
             <?php
-            $query = "SELECT title, price, images FROM motel WHERE address LIKE '%ĐH Vinh%' LIMIT 3";
+            $query = "SELECT ID, title, price, images FROM motel WHERE address LIKE '%ĐH Vinh%' LIMIT 3";
             $result = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<li>";
+                echo "<a href='motel.php?id=" . $row['ID'] . "'>";
                 echo "<img src='" . $row['images'] . "' alt='Ảnh phòng trọ' style='width:100px;height:100px;'>";
                 echo "<p>" . $row['title'] . "</p>";
                 echo "<p>Giá: " . number_format($row['price']) . " VND</p>";
+                echo "</a>";
                 echo "</li>";
             }
             ?>
